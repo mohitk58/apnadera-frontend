@@ -1,0 +1,16 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Configure secrets scanning
+[context.production.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL"
+
+[context.deploy-preview.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL"
+
+[context.branch-deploy.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL" 

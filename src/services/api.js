@@ -1,6 +1,18 @@
 import axios from 'axios'
+
+// Use a more secure approach for the API URL
+const getApiUrl = () => {
+  // In development, use localhost
+  if (import.meta.env.DEV) {
+    return 'http://localhost:5000'
+  }
+  
+  // In production, use the Railway URL
+  return 'https://web-production-261b.up.railway.app'
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: getApiUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
