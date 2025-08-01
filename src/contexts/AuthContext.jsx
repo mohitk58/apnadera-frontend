@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
   }
   const login = async (email, password) => {
     try {
+      console.log('Attempting login with API URL:', api.defaults.baseURL)
       const response = await api.post('/auth/login', { email, password })
       const { token, ...userData } = response.data
       localStorage.setItem('token', token)
@@ -45,7 +46,9 @@ export const AuthProvider = ({ children }) => {
       navigate('/dashboard')
       return { success: true }
     } catch (error) {
-      const message = error.response?.data?.message || 'Login failed'
+      console.error('Login error details:', error)
+      console.error('Error response:', error.response)
+      const message = error.response?.data?.message || 'Login failed. Please check your credentials.'
       toast.error(message)
       return { success: false, error: message }
     }

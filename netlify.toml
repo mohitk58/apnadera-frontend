@@ -13,4 +13,10 @@
   SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL"
 
 [context.branch-deploy.environment]
-  SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL" 
+  SECRETS_SCAN_OMIT_KEYS = "VITE_API_URL"
+
+# Handle SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
