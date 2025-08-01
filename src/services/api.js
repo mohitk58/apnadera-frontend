@@ -4,7 +4,7 @@ import axios from 'axios'
 const getApiUrl = () => {
   // In development, use localhost
   if (import.meta.env.DEV) {
-    return 'http://localhost:5000'
+    return 'http://localhost:5002'
   }
   
   // In production, use the Railway URL
